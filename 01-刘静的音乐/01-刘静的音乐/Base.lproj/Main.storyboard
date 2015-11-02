@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
     </dependencies>
     <scenes>
-        <!--Root View Controller-->
+        <!--主页-->
         <scene sceneID="vAk-zF-l4d">
             <objects>
                 <tableViewController id="sJ7-Vt-I5E" customClass="LJMusicsViewController" sceneMemberID="viewController">
@@ -27,7 +27,7 @@
                             <outlet property="delegate" destination="sJ7-Vt-I5E" id="3Xn-e0-MPS"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="6SD-4z-STS"/>
+                    <navigationItem key="navigationItem" title="主页" id="6SD-4z-STS"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cbf-Yt-1eH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

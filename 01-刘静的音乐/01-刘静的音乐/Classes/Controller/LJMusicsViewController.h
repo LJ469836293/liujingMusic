@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  LJMusicsViewController.h
 //  01-刘静的音乐
 //
 //  Created by 刘静 on 15/11/2.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface LJMusicsViewController : UITableViewController
 
 @end
-

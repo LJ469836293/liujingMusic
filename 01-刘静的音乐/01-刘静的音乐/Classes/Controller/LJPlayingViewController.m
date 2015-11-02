@@ -28,6 +28,8 @@
 // 1.拿到window
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
     
+    window.userInteractionEnabled = NO;
+    
     // 2.设置view的frame
     self.view.frame = window.bounds;
     
@@ -37,8 +39,10 @@
     // 4. 给self.view添加动画
     self.view.y =self.view.height;
     
-    [UIView animateWithDuration:1.0 animations:^{
+    [UIView animateWithDuration:3.0 animations:^{
         self.view.y = 0;
+    }completion:^(BOOL finished) {
+        window.userInteractionEnabled = YES;
     }];
 
 }

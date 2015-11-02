@@ -9,6 +9,7 @@
 #import "LJPlayingViewController.h"
 #import "UIView+AdjustFrame.h"
 @interface LJPlayingViewController ()
+- (IBAction)exit;
 
 @end
 
@@ -24,6 +25,10 @@
     // Dispose of any resources that can be ..recreated.
 }
 
+#pragma mark - 对控制器的操作
+/**
+ *  显示控制器
+ */
 -(void)show{
 // 1.拿到window
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
@@ -39,11 +44,29 @@
     // 4. 给self.view添加动画
     self.view.y =self.view.height;
     
-    [UIView animateWithDuration:3.0 animations:^{
+    [UIView animateWithDuration:1.0 animations:^{
         self.view.y = 0;
     }completion:^(BOOL finished) {
         window.userInteractionEnabled = YES;
     }];
 
+}
+/**
+ *  退出控制器
+ */
+- (IBAction)exit {
+    // 1.拿到window
+    UIWindow *window = [UIApplication sharedApplication].keyWindow;
+    window.userInteractionEnabled = NO;
+
+    // 2.执行动画退出
+    [UIView animateWithDuration:1.0 animations:^{
+        self.view.y = self.view.height;
+    }completion:^(BOOL finished) {
+        window.userInteractionEnabled = YES;
+    }];
+    
+    
+    
 }
 @end

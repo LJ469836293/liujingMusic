@@ -68,6 +68,7 @@
 		C59A5B0D1BE785A500E83E0F /* LJPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A5B0B1BE785A500E83E0F /* LJPlayingViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C59A5B0E1BE785A500E83E0F /* LJPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59A5B0C1BE785A500E83E0F /* LJPlayingViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		C59A5B111BE78B7600E83E0F /* UIView+AdjustFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A5B101BE78B7600E83E0F /* UIView+AdjustFrame.m */; settings = {ASSET_TAGS = (); }; };
+		C5E55E0E1BE9CDDD00C65500 /* LJMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E55E0D1BE9CDDD00C65500 /* LJMusicTool.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -150,6 +151,8 @@
 		C59A5B0C1BE785A500E83E0F /* LJPlayingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJPlayingViewController.xib; sourceTree = "<group>"; };
 		C59A5B0F1BE78B7600E83E0F /* UIView+AdjustFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AdjustFrame.h"; sourceTree = "<group>"; };
 		C59A5B101BE78B7600E83E0F /* UIView+AdjustFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AdjustFrame.m"; sourceTree = "<group>"; };
+		C5E55E0C1BE9CDDD00C65500 /* LJMusicTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJMusicTool.h; sourceTree = "<group>"; };
+		C5E55E0D1BE9CDDD00C65500 /* LJMusicTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJMusicTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +342,8 @@
 		C59A5ADD1BE7643E00E83E0F /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				C5E55E0C1BE9CDDD00C65500 /* LJMusicTool.h */,
+				C5E55E0D1BE9CDDD00C65500 /* LJMusicTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -494,6 +499,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5E55E0E1BE9CDDD00C65500 /* LJMusicTool.m in Sources */,
 				C59A5AFC1BE7703800E83E0F /* MJIvar.m in Sources */,
 				C59A5B061BE77D2600E83E0F /* UIImage+Circle.m in Sources */,
 				C59A5AFF1BE7703800E83E0F /* MJType.m in Sources */,
@@ -619,8 +625,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "01-刘静的音乐/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.liujing.-1------";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -631,8 +638,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = BrandAsset;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = "01-刘静的音乐/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "cn.liujing.-1------";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -658,6 +666,7 @@
 				C59A5A7D1BE7604500E83E0F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

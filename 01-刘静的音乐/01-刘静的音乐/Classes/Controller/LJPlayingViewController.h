@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class LJMusic;
 
 @interface LJPlayingViewController : UIViewController
 
+@property(nonatomic,strong)LJMusic *music;
+
 -(void)show;
+
 @end

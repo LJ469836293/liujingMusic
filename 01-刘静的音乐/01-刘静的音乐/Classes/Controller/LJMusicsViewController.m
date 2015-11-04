@@ -8,14 +8,14 @@
 
 #import "LJMusicsViewController.h"
 #import "LJMusic.h"
-#import "MJExtension.h"
 #import "UIImage+Circle.h"
 #import "LJPlayingViewController.h"
+#import "LJMusicTool.h"
 @interface LJMusicsViewController ()
 /**
  *  所有音乐的数组
  */
-@property(nonatomic,strong)NSArray *musics;
+//@property(nonatomic,strong)NSArray *musics;
 /**
  *  正在播放的控制器
  */
@@ -31,16 +31,17 @@
     self.tableView.rowHeight = 80;
 
 
+
 }
 
 #pragma mark - 懒加载
--(NSArray *)musics{
-    if (_musics == nil) {
-        self.musics =[LJMusic objectArrayWithFilename:@"Musics.plist"];
-    }
-
-    return _musics;
-}
+//-(NSArray *)musics{
+//    if (_musics == nil) {
+//        self.musics =[LJMusic objectArrayWithFilename:@"Musics.plist"];
+//    }
+//
+//    return _musics;
+//}
 
 -(LJPlayingViewController *)playingVc{
     if (_playingVc == nil) {
@@ -57,13 +58,16 @@
 // 1. 让cell变为不选中状态
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+    LJMusic *music = [LJMusicTool musics][indexPath.row];
+    self.playingVc.music = music;
+    
     // 2. 弹出控制器
     [self.playingVc show];
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
 
-    return self.musics.count;
+    return [LJMusicTool musics].count;
 
 }
 
@@ -79,7 +83,7 @@ static NSString *ID = @"MusicCell";
     }
 
     // 1.取出模型对象
-    LJMusic *music = self.musics[indexPath.row];
+    LJMusic *music = [LJMusicTool musics][indexPath.row];
     
     // 2.给cell设置数据
     cell.imageView.image = [UIImage circleImageWithName:music.singerIcon borderWidth:3.0 borderColor:[UIColor purpleColor]];

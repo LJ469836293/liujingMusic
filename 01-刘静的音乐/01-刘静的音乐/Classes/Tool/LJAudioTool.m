@@ -7,7 +7,7 @@
 //
 
 #import "LJAudioTool.h"
-#import <AVFoundation/AVFoundation.h>
+
 @implementation LJAudioTool
 
 static NSMutableDictionary *_soundIDs;
@@ -20,7 +20,7 @@ static NSMutableDictionary *_musics;
 
 
 #pragma mark - 播放音乐
-+(void)playMusicWithName:(NSString *)musicName{
++(AVAudioPlayer *)playMusicWithName:(NSString *)musicName{
 
     // 0.判断musicName 是否为空
     assert(musicName);
@@ -45,6 +45,9 @@ static NSMutableDictionary *_musics;
     
     // 3. 播放音乐
     [player play];
+    
+    // 4.返回播放器
+    return player;
     
 }
 +(void)pauseMusicWithName:(NSString *)musicName{

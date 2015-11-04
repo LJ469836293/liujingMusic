@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <AVFoundation/AVFoundation.h>
 @interface LJAudioTool : NSObject
 ///  播放音乐
 ///
 ///  @param musicName 音乐名称
-+(void)playMusicWithName:(NSString *)musicName;
++(AVAudioPlayer *)playMusicWithName:(NSString *)musicName;
 
 ///  暂停音乐
 ///

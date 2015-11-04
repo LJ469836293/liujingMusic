@@ -23,7 +23,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *singerLable;
 // 歌手的封面
 @property (weak, nonatomic) IBOutlet UIImageView *singerIcon;
-
+// 音乐总时长
+@property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
 @end
 
 @implementation LJPlayingViewController
@@ -109,7 +110,8 @@
         self.singerIcon.image = [UIImage imageNamed:playingMusic.icon];
         
         // 3.播放音乐
-        [LJAudioTool playMusicWithName:playingMusic.filename];
+       AVAudioPlayer *player = [LJAudioTool playMusicWithName:playingMusic.filename];
+        self.totalTimeLabel.text = [self stringWithTime:player.duration];
     }
     
 }
@@ -121,9 +123,17 @@
     self.songLable.text = nil;
     self.singerLable.text = nil;
     self.singerIcon.image = [UIImage imageNamed:@"play_cover_pic_bg"];
-
+    self.totalTimeLabel.text = nil;
    // 2.停止播放音乐
     [LJAudioTool stopMusicWithName:self.playingMusic.filename];
+}
+#pragma mark -私有方法
+-(NSString *)stringWithTime:(NSTimeInterval)time{
+    NSInteger minute = time / 60;
+    NSInteger second = (NSInteger)time % 60;
+    return [NSString stringWithFormat:@"%02ld:%02ld",minute,second];
+
+    
 }
 
 @end

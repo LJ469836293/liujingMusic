@@ -10,6 +10,7 @@
 #import "UIView+AdjustFrame.h"
 #import "LJMusicTool.h"
 #import "LJMusic.h"
+#import "LJAudioTool.h"
 @interface LJPlayingViewController ()
 
 //记录正在播放的音乐
@@ -106,6 +107,9 @@
         self.songLable.text = playingMusic.name;
         self.singerLable.text = playingMusic.singer;
         self.singerIcon.image = [UIImage imageNamed:playingMusic.icon];
+        
+        // 3.播放音乐
+        [LJAudioTool playMusicWithName:playingMusic.filename];
     }
     
 }
@@ -118,7 +122,8 @@
     self.singerLable.text = nil;
     self.singerIcon.image = [UIImage imageNamed:@"play_cover_pic_bg"];
 
-
+   // 2.停止播放音乐
+    [LJAudioTool stopMusicWithName:self.playingMusic.filename];
 }
 
 @end

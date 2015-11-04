@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LJPlayingViewController">
             <connections>
+                <outlet property="singerIcon" destination="xcy-lb-O6q" id="511-zw-7eq"/>
+                <outlet property="singerLable" destination="1xn-rq-eQz" id="Iz0-wJ-Pgd"/>
+                <outlet property="songLable" destination="RXB-8X-pM2" id="hgh-il-nx4"/>
                 <outlet property="view" destination="gPG-dC-Io9" id="6Pu-7X-CQN"/>
             </connections>
         </placeholder>
@@ -18,10 +21,6 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_cover_pic_bg" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-lb-O6q" userLabel="背景图片">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
                 </imageView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhr-ZX-gnF" userLabel="歌词的View" customClass="HMLrcView">
-                    <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMa-sU-2e3" userLabel="退出按钮">
                     <rect key="frame" x="10" y="30" width="41" height="48"/>
                     <constraints>
@@ -31,6 +30,9 @@
                     <state key="normal" image="quit">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="exit" destination="-1" eventType="touchUpInside" id="U6l-ba-PgI"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMa-HI-sY9" userLabel="歌词按钮">
                     <rect key="frame" x="549" y="30" width="41" height="48"/>
@@ -157,19 +159,15 @@
             <gestureRecognizers/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="xcy-lb-O6q" secondAttribute="bottom" constant="160" id="8qA-RZ-OWj"/>
-                <constraint firstItem="T0l-xi-zcS" firstAttribute="top" secondItem="jhr-ZX-gnF" secondAttribute="bottom" id="Bby-KS-zGH"/>
                 <constraint firstAttribute="trailing" secondItem="T0l-xi-zcS" secondAttribute="trailing" id="COE-uO-eGW"/>
                 <constraint firstItem="iMa-sU-2e3" firstAttribute="top" secondItem="gPG-dC-Io9" secondAttribute="top" constant="30" id="Dhk-b5-eUd"/>
                 <constraint firstItem="iMa-sU-2e3" firstAttribute="leading" secondItem="gPG-dC-Io9" secondAttribute="leading" constant="10" id="Gwl-y8-G6o"/>
-                <constraint firstAttribute="trailing" secondItem="jhr-ZX-gnF" secondAttribute="trailing" id="HSS-yD-R77"/>
                 <constraint firstAttribute="trailing" secondItem="nMa-HI-sY9" secondAttribute="trailing" constant="10" id="K7Y-sg-rIJ"/>
                 <constraint firstItem="nMa-HI-sY9" firstAttribute="height" secondItem="iMa-sU-2e3" secondAttribute="height" id="KCB-cS-Vtb"/>
                 <constraint firstAttribute="trailing" secondItem="xcy-lb-O6q" secondAttribute="trailing" id="KVb-8I-cyt"/>
                 <constraint firstItem="nMa-HI-sY9" firstAttribute="width" secondItem="iMa-sU-2e3" secondAttribute="width" id="KW5-Zc-PFA"/>
                 <constraint firstItem="xcy-lb-O6q" firstAttribute="leading" secondItem="gPG-dC-Io9" secondAttribute="leading" id="M96-hg-KIA"/>
-                <constraint firstItem="jhr-ZX-gnF" firstAttribute="top" secondItem="gPG-dC-Io9" secondAttribute="top" id="UOE-yT-uYT"/>
                 <constraint firstItem="nMa-HI-sY9" firstAttribute="top" secondItem="gPG-dC-Io9" secondAttribute="top" constant="30" id="YSR-pa-pa3"/>
-                <constraint firstItem="jhr-ZX-gnF" firstAttribute="leading" secondItem="gPG-dC-Io9" secondAttribute="leading" id="b1b-6U-wzG"/>
                 <constraint firstAttribute="bottom" secondItem="T0l-xi-zcS" secondAttribute="bottom" id="iOs-Z6-hCI"/>
                 <constraint firstItem="xcy-lb-O6q" firstAttribute="top" secondItem="gPG-dC-Io9" secondAttribute="top" id="ieL-Vk-4H4"/>
                 <constraint firstItem="T0l-xi-zcS" firstAttribute="leading" secondItem="gPG-dC-Io9" secondAttribute="leading" id="u06-oD-yoR"/>

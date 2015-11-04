@@ -11,7 +11,7 @@
 
 @interface LJPlayingViewController : UIViewController
 
-@property(nonatomic,strong)LJMusic *music;
+
 
 -(void)show;
 

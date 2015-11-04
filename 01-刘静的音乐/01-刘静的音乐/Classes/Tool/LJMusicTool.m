@@ -27,7 +27,7 @@ static LJMusic *_playingMusic;
 
 
 +(LJMusic *)playingMusic {
-    return nil;
+    return _playingMusic;
 }
 
 +(void)setPlayingMusic:(LJMusic *)playingMusic {

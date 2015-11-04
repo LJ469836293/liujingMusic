@@ -59,7 +59,9 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
     LJMusic *music = [LJMusicTool musics][indexPath.row];
-    self.playingVc.music = music;
+//    self.playingVc.music = music;
+    
+    [LJMusicTool setPlayingMusic:music];
     
     // 2. 弹出控制器
     [self.playingVc show];

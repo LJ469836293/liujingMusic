@@ -38,6 +38,12 @@
  *  进度条背景点击
  */
 - (IBAction)tapProgressBackground:(UITapGestureRecognizer *)sender;
+/**
+ *  拖拽滑块按钮
+ */
+- (IBAction)panSliderButton:(UIPanGestureRecognizer *)sender;
+
+
 @end
 
 @implementation LJPlayingViewController
@@ -221,6 +227,73 @@
     
     //  更新文字
     [self updateInfo];
+    
+    
+    
+    
+}
+/**
+ *  拖拽滑块按钮时更新
+ */
+- (IBAction)panSliderButton:(UIPanGestureRecognizer *)sender {
+//    // 1.获取用户点击位置
+//    CGPoint point = [sender locationInView:sender.view];
+//    
+//    // 2.改变sliderButton的约束
+//    if (point.x <= self.sliderButton.width * 0.5) {
+//        self.silderLeftConstraint.constant = 0;
+//    }else if(point.x >= self.view.width - self.sliderButton.width * 0.5){
+//    
+//        self.silderLeftConstraint.constant = self.view.width - self.sliderButton.width - 1;
+//    
+//    }else{
+//     
+//        self.silderLeftConstraint.constant = point.x - self.sliderButton.width * 0.5;
+//    
+//    }
+    
+  // 1.获取用户拖拽位移
+    CGPoint point = [sender translationInView:sender.view];
+    [sender setTranslation:CGPointZero inView:sender.view];
+    
+    // 2.改变sliderButton的约束
+    if (self.silderLeftConstraint.constant + point.x <= 0) {
+        self.silderLeftConstraint.constant = 0;
+    }else if(self.silderLeftConstraint.constant + point.x >= self.view.width - self.sliderButton.width){
+        self.silderLeftConstraint.constant = self.view.width - self.sliderButton.width;
+    }else{
+    
+        self.silderLeftConstraint.constant += point.x;
+    
+    }
+    
+    // 3.获取拖拽进度对应的播放时间
+    CGFloat progressRatio = self.silderLeftConstraint.constant / (self.view.width - self.sliderButton.width);
+    CGFloat currentTime = progressRatio *self.player.duration;
+    
+    // 4.更新文字
+    NSString *currentTimeStr = [self stringWithTime:currentTime];
+    [self.sliderButton setTitle:currentTimeStr forState:UIControlStateNormal];
+    
+    // 5.监听拖拽手势状态
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        // 5.1 移除定时器
+        [self removeProgressTimer];
+    }else if(sender.state == UIGestureRecognizerStateEnded){
+          // 5.2更新播放时间
+        self.player.currentTime = currentTime;
+        // 5.3 添加定时器
+        [self addProgressTimer];
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     

@@ -104,6 +104,9 @@
                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="BGh-gK-Zmn" appends="YES" id="AYn-Wc-w1a"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="李克勤" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1xn-rq-eQz" userLabel="歌手Label">
                             <rect key="frame" x="8" y="31" width="39" height="16"/>
@@ -185,6 +188,11 @@
                 <action selector="tapProgressBackground:" destination="-1" id="yWP-rk-Fb9"/>
             </connections>
         </tapGestureRecognizer>
+        <panGestureRecognizer minimumNumberOfTouches="1" id="BGh-gK-Zmn">
+            <connections>
+                <action selector="panSliderButton:" destination="-1" id="eMu-Iy-Qob"/>
+            </connections>
+        </panGestureRecognizer>
     </objects>
     <resources>
         <image name="lyric_normal" width="41" height="48"/>

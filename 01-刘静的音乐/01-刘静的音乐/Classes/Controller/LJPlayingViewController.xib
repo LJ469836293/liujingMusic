@@ -89,6 +89,9 @@
                                 <constraint firstAttribute="bottom" secondItem="Pdn-Nt-KyL" secondAttribute="bottom" id="qC4-4H-pr2"/>
                                 <constraint firstItem="Pdn-Nt-KyL" firstAttribute="leading" secondItem="Xhw-fE-al4" secondAttribute="leading" id="ulg-Ju-sDY"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="q2A-Gg-ZnZ" appends="YES" id="aT5-1w-jwy"/>
+                            </connections>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hvr-Lb-3Hc" userLabel="拖动按钮">
                             <rect key="frame" x="0.0" y="47" width="41" height="21"/>
@@ -177,6 +180,11 @@
             </constraints>
             <point key="canvasLocation" x="382" y="291"/>
         </view>
+        <tapGestureRecognizer id="q2A-Gg-ZnZ">
+            <connections>
+                <action selector="tapProgressBackground:" destination="-1" id="yWP-rk-Fb9"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="lyric_normal" width="41" height="48"/>

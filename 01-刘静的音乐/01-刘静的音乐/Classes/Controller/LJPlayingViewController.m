@@ -34,6 +34,10 @@
 
 //拖拽按钮与左边的距离
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *silderLeftConstraint;
+/**
+ *  进度条背景点击
+ */
+- (IBAction)tapProgressBackground:(UITapGestureRecognizer *)sender;
 @end
 
 @implementation LJPlayingViewController
@@ -172,6 +176,10 @@
     
 }
 
+#pragma mark - 更新进度条的内容
+/**
+ *  随着播放进度更新进度条
+ */
 -(void)updateInfo{
     // 0.计算播放比例
     CGFloat progressRatio = self .player.currentTime/self.player.duration;
@@ -187,5 +195,35 @@
 
 
 }
-
+/**
+ *  点击进度条时更新
+ */
+- (IBAction)tapProgressBackground:(UITapGestureRecognizer *)sender {
+      // 1.获取用户点击位置
+    CGPoint point = [sender locationInView:sender.view];
+    
+    // 2.改变silderBtton的约束
+    if (point.x <= self.sliderButton.width * 0.5) {
+        self.silderLeftConstraint.constant = 0;
+    }else if (point.x >= self.view.width - self.sliderButton.width * 0.5){
+        self.silderLeftConstraint.constant = self.view.width - self.sliderButton.width - 1;
+    
+    }else{
+    
+        self.silderLeftConstraint.constant = point.x - self.sliderButton.width * 0.5;
+    
+    }
+    
+    // 3.改变当前播放时间
+    CGFloat progressRatio = self.silderLeftConstraint.constant / (self.view.width - self.sliderButton.width);
+    CGFloat currentTime = progressRatio *self.player.duration;
+    self.player.currentTime = currentTime;
+    
+    //  更新文字
+    [self updateInfo];
+    
+    
+    
+    
+}
 @end

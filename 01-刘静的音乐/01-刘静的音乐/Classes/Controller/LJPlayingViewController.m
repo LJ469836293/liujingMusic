@@ -34,6 +34,10 @@
 
 //拖拽按钮与左边的距离
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *silderLeftConstraint;
+
+// 显示时间的Label
+@property (weak, nonatomic) IBOutlet UILabel *showTimeLable;
+
 /**
  *  进度条背景点击
  */
@@ -50,7 +54,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    self.showTimeLable.layer.cornerRadius = 5.0;
+    self.showTimeLable.layer.masksToBounds = YES;
+
+//    self.showTimeLable.clipsToBounds = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -274,16 +282,23 @@
     // 4.更新文字
     NSString *currentTimeStr = [self stringWithTime:currentTime];
     [self.sliderButton setTitle:currentTimeStr forState:UIControlStateNormal];
+    self.showTimeLable.text = currentTimeStr;
+    
     
     // 5.监听拖拽手势状态
     if (sender.state == UIGestureRecognizerStateBegan) {
         // 5.1 移除定时器
         [self removeProgressTimer];
+        //5.2让显示时间的lable取消隐藏
+        self.showTimeLable.hidden = NO;
+        
     }else if(sender.state == UIGestureRecognizerStateEnded){
-          // 5.2更新播放时间
+          // 5.1更新播放时间
         self.player.currentTime = currentTime;
-        // 5.3 添加定时器
+        // 5.2 添加定时器
         [self addProgressTimer];
+        //5.3让显示时间的lable取消隐藏
+        self.showTimeLable.hidden = YES;
         
     }
     

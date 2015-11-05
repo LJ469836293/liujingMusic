@@ -7,8 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LJPlayingViewController">
             <connections>
+                <outlet property="silderLeftConstraint" destination="Yri-we-f54" id="SJE-49-fNx"/>
                 <outlet property="singerIcon" destination="xcy-lb-O6q" id="511-zw-7eq"/>
                 <outlet property="singerLable" destination="1xn-rq-eQz" id="Iz0-wJ-Pgd"/>
+                <outlet property="sliderButton" destination="hvr-Lb-3Hc" id="vvc-Dw-Snc"/>
                 <outlet property="songLable" destination="RXB-8X-pM2" id="hgh-il-nx4"/>
                 <outlet property="totalTimeLabel" destination="Mja-GF-9Vs" id="YM0-Cv-C2b"/>
                 <outlet property="view" destination="gPG-dC-Io9" id="6Pu-7X-CQN"/>

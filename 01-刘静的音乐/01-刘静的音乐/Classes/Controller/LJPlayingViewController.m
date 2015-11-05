@@ -17,6 +17,8 @@
 //记录正在播放的音乐
 @property(nonatomic, strong)LJMusic *playingMusic;
 
+@property(nonatomic,strong)AVAudioPlayer *player;
+
 - (IBAction)exit;
 // 音乐的lable
 @property (weak, nonatomic) IBOutlet UILabel *songLable;
@@ -26,6 +28,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *singerIcon;
 // 音乐总时长
 @property (weak, nonatomic) IBOutlet UILabel *totalTimeLabel;
+
+//拖拽按钮
+@property (weak, nonatomic) IBOutlet UIButton *sliderButton;
+
+//拖拽按钮与左边的距离
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *silderLeftConstraint;
 @end
 
 @implementation LJPlayingViewController
@@ -116,10 +124,11 @@
         self.singerIcon.image = [UIImage imageNamed:playingMusic.icon];
         
         // 3.播放音乐
-       AVAudioPlayer *player = [LJAudioTool playMusicWithName:playingMusic.filename];
-        self.totalTimeLabel.text = [self stringWithTime:player.duration];
+       self.player = [LJAudioTool playMusicWithName:playingMusic.filename];
+        self.totalTimeLabel.text = [self stringWithTime:self.player.duration];
         //4.添加定时器
         [self addProgressTimer];
+        [self updateInfo];
     
     
 }
@@ -164,7 +173,19 @@
 }
 
 -(void)updateInfo{
-    NSLog(@"更新数据");
+    // 0.计算播放比例
+    CGFloat progressRatio = self .player.currentTime/self.player.duration;
+    
+    
+    // 1.更新滑块的位置
+    self.silderLeftConstraint.constant = progressRatio * (self.view.width - self.sliderButton.width);
+    
+    
+    // 2.更新滑块的文字
+    NSString *currentTimerStr = [self stringWithTime:self.player.currentTime];
+    [self.sliderButton setTitle:currentTimerStr forState:UIControlStateNormal];
+
+
 }
 
 @end

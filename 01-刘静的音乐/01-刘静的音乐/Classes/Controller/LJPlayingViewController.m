@@ -11,7 +11,7 @@
 #import "LJMusicTool.h"
 #import "LJMusic.h"
 #import "LJAudioTool.h"
-@interface LJPlayingViewController ()
+@interface LJPlayingViewController ()<AVAudioPlayerDelegate>
 //进度的定时器
 @property(nonatomic,strong)NSTimer *progressTimer;
 //记录正在播放的音乐
@@ -159,12 +159,14 @@
         // 3.播放音乐
        self.player = [LJAudioTool playMusicWithName:playingMusic.filename];
         self.totalTimeLabel.text = [self stringWithTime:self.player.duration];
+        self.player.delegate = self;
+    
         //4.添加定时器
         [self addProgressTimer];
         [self updateInfo];
     
     // 5.改变按钮的状态
-    self.playOrPauseButton.selected = NO;
+         self.playOrPauseButton.selected = NO;
     
 }
 /**
@@ -277,7 +279,7 @@
     if (self.silderLeftConstraint.constant + point.x <= 0) {
         self.silderLeftConstraint.constant = 0;
     }else if(self.silderLeftConstraint.constant + point.x >= self.view.width - self.sliderButton.width){
-        self.silderLeftConstraint.constant = self.view.width - self.sliderButton.width;
+        self.silderLeftConstraint.constant = self.view.width - self.sliderButton.width - 1;
     }else{
     
         self.silderLeftConstraint.constant += point.x;
@@ -349,6 +351,32 @@
     [self stopPlayingMusic];
     [LJMusicTool nextMusic];
     [self startPlayingMusic];
+}
+
+#pragma mark - AVAudioPlayerDelegate的代理方法
+/**
+ *  当音乐播放完成时调用
+ */
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+
+    if (flag) {
+        [self nextButtoClick];
+    }
+
+}
+/**
+ *  当音乐播放打断开始时调用
+ */
+-(void)audioPlayerBeginInterruption:(AVAudioPlayer *)player{
+
+    [self playOrPauseButtonClick];
+}
+/**
+ *  当音乐播放打断结束时调用
+ */
+-(void)audioPlayerEndInterruption:(AVAudioPlayer *)player{
+
+    [self playOrPauseButtonClick];
 }
 
 

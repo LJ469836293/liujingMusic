@@ -12,7 +12,8 @@
 #import "LJMusic.h"
 #import "LJAudioTool.h"
 @interface LJPlayingViewController ()
-
+//进度的定时器
+@property(nonatomic,strong)NSTimer *progressTimer;
 //记录正在播放的音乐
 @property(nonatomic, strong)LJMusic *playingMusic;
 
@@ -86,6 +87,9 @@
         self.view.y = self.view.height;
     }completion:^(BOOL finished) {
         window.userInteractionEnabled = YES;
+        
+        //移除定时器
+        [self removeProgressTimer];
     }];
     
     
@@ -100,8 +104,10 @@
 // 1. 拿到正在播放的音乐
     LJMusic *playingMusic = [LJMusicTool playingMusic];
     
-    if (playingMusic != self.playingMusic) {
-        
+    if (playingMusic == self.playingMusic) {
+        [self addProgressTimer];
+        return;
+    }
         self.playingMusic = playingMusic;
         // 2. 设置界面数据
         
@@ -112,7 +118,9 @@
         // 3.播放音乐
        AVAudioPlayer *player = [LJAudioTool playMusicWithName:playingMusic.filename];
         self.totalTimeLabel.text = [self stringWithTime:player.duration];
-    }
+        //4.添加定时器
+        [self addProgressTimer];
+    
     
 }
 /**
@@ -126,7 +134,26 @@
     self.totalTimeLabel.text = nil;
    // 2.停止播放音乐
     [LJAudioTool stopMusicWithName:self.playingMusic.filename];
+    
+    //3.移除定时器
+    [self removeProgressTimer];
 }
+
+#pragma mark - 对定时器的操作
+//添加定时器
+-(void)addProgressTimer{
+    self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateInfo) userInfo:nil repeats:YES];
+}
+
+//移除定时器
+-(void)removeProgressTimer{
+    [self.progressTimer invalidate];
+    self.progressTimer = nil;
+
+
+}
+
+
 #pragma mark -私有方法
 -(NSString *)stringWithTime:(NSTimeInterval)time{
     NSInteger minute = time / 60;
@@ -134,6 +161,10 @@
     return [NSString stringWithFormat:@"%02ld:%02ld",minute,second];
 
     
+}
+
+-(void)updateInfo{
+    NSLog(@"更新数据");
 }
 
 @end

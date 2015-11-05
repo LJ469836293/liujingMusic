@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LJPlayingViewController">
             <connections>
+                <outlet property="LrcView" destination="KGL-B5-SH5" id="Ii8-4p-DzV"/>
                 <outlet property="playOrPauseButton" destination="yR7-nh-6uv" id="ZEA-on-tUj"/>
                 <outlet property="showTimeLable" destination="Vvp-yu-KhC" id="mGQ-Bw-uPi"/>
                 <outlet property="silderLeftConstraint" destination="Yri-we-f54" id="SJE-49-fNx"/>
@@ -26,6 +27,10 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="play_cover_pic_bg" translatesAutoresizingMaskIntoConstraints="NO" id="xcy-lb-O6q" userLabel="背景图片">
                     <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
                 </imageView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGL-B5-SH5" userLabel="歌词的view" customClass="LJLrcView">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="440"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iMa-sU-2e3" userLabel="退出按钮">
                     <rect key="frame" x="10" y="30" width="41" height="48"/>
                     <constraints>
@@ -45,6 +50,9 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" image="pic_normal"/>
+                    <connections>
+                        <action selector="lrcOrPicButtonClick:" destination="-1" eventType="touchUpInside" id="7SI-hM-Pb3"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T0l-xi-zcS" userLabel="底部控制器View">
                     <rect key="frame" x="0.0" y="440" width="600" height="160"/>
@@ -139,7 +147,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3:54" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mja-GF-9Vs" userLabel="显示时间Label">
-                            <rect key="frame" x="563.5" y="68" width="28.5" height="16"/>
+                            <rect key="frame" x="563" y="68" width="28.5" height="16"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -178,10 +186,13 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <gestureRecognizers/>
             <constraints>
+                <constraint firstItem="KGL-B5-SH5" firstAttribute="top" secondItem="gPG-dC-Io9" secondAttribute="top" id="3fL-VK-nMi"/>
                 <constraint firstAttribute="bottom" secondItem="xcy-lb-O6q" secondAttribute="bottom" constant="160" id="8qA-RZ-OWj"/>
                 <constraint firstAttribute="trailing" secondItem="T0l-xi-zcS" secondAttribute="trailing" id="COE-uO-eGW"/>
                 <constraint firstItem="iMa-sU-2e3" firstAttribute="top" secondItem="gPG-dC-Io9" secondAttribute="top" constant="30" id="Dhk-b5-eUd"/>
+                <constraint firstItem="T0l-xi-zcS" firstAttribute="top" secondItem="KGL-B5-SH5" secondAttribute="bottom" id="Dum-AN-tyl"/>
                 <constraint firstItem="iMa-sU-2e3" firstAttribute="leading" secondItem="gPG-dC-Io9" secondAttribute="leading" constant="10" id="Gwl-y8-G6o"/>
+                <constraint firstAttribute="trailing" secondItem="KGL-B5-SH5" secondAttribute="trailing" id="JCp-X8-LpN"/>
                 <constraint firstAttribute="trailing" secondItem="nMa-HI-sY9" secondAttribute="trailing" constant="10" id="K7Y-sg-rIJ"/>
                 <constraint firstItem="nMa-HI-sY9" firstAttribute="height" secondItem="iMa-sU-2e3" secondAttribute="height" id="KCB-cS-Vtb"/>
                 <constraint firstAttribute="trailing" secondItem="xcy-lb-O6q" secondAttribute="trailing" id="KVb-8I-cyt"/>
@@ -190,6 +201,7 @@
                 <constraint firstItem="nMa-HI-sY9" firstAttribute="top" secondItem="gPG-dC-Io9" secondAttribute="top" constant="30" id="YSR-pa-pa3"/>
                 <constraint firstAttribute="bottom" secondItem="T0l-xi-zcS" secondAttribute="bottom" id="iOs-Z6-hCI"/>
                 <constraint firstItem="xcy-lb-O6q" firstAttribute="top" secondItem="gPG-dC-Io9" secondAttribute="top" id="ieL-Vk-4H4"/>
+                <constraint firstItem="KGL-B5-SH5" firstAttribute="leading" secondItem="gPG-dC-Io9" secondAttribute="leading" id="t5y-9F-xy2"/>
                 <constraint firstItem="T0l-xi-zcS" firstAttribute="leading" secondItem="gPG-dC-Io9" secondAttribute="leading" id="u06-oD-yoR"/>
             </constraints>
             <point key="canvasLocation" x="382" y="291"/>

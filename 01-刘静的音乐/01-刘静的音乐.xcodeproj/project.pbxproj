@@ -68,6 +68,9 @@
 		C59A5B0D1BE785A500E83E0F /* LJPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A5B0B1BE785A500E83E0F /* LJPlayingViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C59A5B0E1BE785A500E83E0F /* LJPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59A5B0C1BE785A500E83E0F /* LJPlayingViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		C59A5B111BE78B7600E83E0F /* UIView+AdjustFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A5B101BE78B7600E83E0F /* UIView+AdjustFrame.m */; settings = {ASSET_TAGS = (); }; };
+		C5AE25F71BEB937C00A6664E /* DRNRealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AE25F41BEB937C00A6664E /* DRNRealTimeBlurView.m */; settings = {ASSET_TAGS = (); }; };
+		C5AE25F81BEB937C00A6664E /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AE25F61BEB937C00A6664E /* UIImage+BoxBlur.m */; settings = {ASSET_TAGS = (); }; };
+		C5AE25FB1BEB940E00A6664E /* LJLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AE25FA1BEB940E00A6664E /* LJLrcView.m */; settings = {ASSET_TAGS = (); }; };
 		C5E55E0E1BE9CDDD00C65500 /* LJMusicTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E55E0D1BE9CDDD00C65500 /* LJMusicTool.m */; settings = {ASSET_TAGS = (); }; };
 		C5E55E111BEA534500C65500 /* LJAudioTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C5E55E101BEA534500C65500 /* LJAudioTool.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -152,6 +155,12 @@
 		C59A5B0C1BE785A500E83E0F /* LJPlayingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJPlayingViewController.xib; sourceTree = "<group>"; };
 		C59A5B0F1BE78B7600E83E0F /* UIView+AdjustFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AdjustFrame.h"; sourceTree = "<group>"; };
 		C59A5B101BE78B7600E83E0F /* UIView+AdjustFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AdjustFrame.m"; sourceTree = "<group>"; };
+		C5AE25F31BEB937C00A6664E /* DRNRealTimeBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNRealTimeBlurView.h; sourceTree = "<group>"; };
+		C5AE25F41BEB937C00A6664E /* DRNRealTimeBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNRealTimeBlurView.m; sourceTree = "<group>"; };
+		C5AE25F51BEB937C00A6664E /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
+		C5AE25F61BEB937C00A6664E /* UIImage+BoxBlur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+BoxBlur.m"; sourceTree = "<group>"; };
+		C5AE25F91BEB940E00A6664E /* LJLrcView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJLrcView.h; sourceTree = "<group>"; };
+		C5AE25FA1BEB940E00A6664E /* LJLrcView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJLrcView.m; sourceTree = "<group>"; };
 		C5E55E0C1BE9CDDD00C65500 /* LJMusicTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJMusicTool.h; sourceTree = "<group>"; };
 		C5E55E0D1BE9CDDD00C65500 /* LJMusicTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJMusicTool.m; sourceTree = "<group>"; };
 		C5E55E0F1BEA534500C65500 /* LJAudioTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJAudioTool.h; sourceTree = "<group>"; };
@@ -193,6 +202,7 @@
 				C59A5A731BE7604500E83E0F /* Assets.xcassets */,
 				C59A5A751BE7604500E83E0F /* LaunchScreen.storyboard */,
 				C59A5A781BE7604500E83E0F /* Info.plist */,
+				C5AE25F21BEB937C00A6664E /* DRNRealTimeBlur */,
 				C59A5A671BE7604500E83E0F /* Supporting Files */,
 			);
 			path = "01-刘静的音乐";
@@ -356,6 +366,8 @@
 		C59A5ADE1BE7643E00E83E0F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C5AE25F91BEB940E00A6664E /* LJLrcView.h */,
+				C5AE25FA1BEB940E00A6664E /* LJLrcView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -384,6 +396,18 @@
 				C59A5AFA1BE7703800E83E0F /* NSObject+MJMember.m */,
 			);
 			path = MJExtension;
+			sourceTree = "<group>";
+		};
+		C5AE25F21BEB937C00A6664E /* DRNRealTimeBlur */ = {
+			isa = PBXGroup;
+			children = (
+				C5AE25F31BEB937C00A6664E /* DRNRealTimeBlurView.h */,
+				C5AE25F41BEB937C00A6664E /* DRNRealTimeBlurView.m */,
+				C5AE25F51BEB937C00A6664E /* UIImage+BoxBlur.h */,
+				C5AE25F61BEB937C00A6664E /* UIImage+BoxBlur.m */,
+			);
+			name = DRNRealTimeBlur;
+			path = Classes/DRNRealTimeBlur;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -508,8 +532,10 @@
 				C59A5AFC1BE7703800E83E0F /* MJIvar.m in Sources */,
 				C59A5B061BE77D2600E83E0F /* UIImage+Circle.m in Sources */,
 				C59A5AFF1BE7703800E83E0F /* MJType.m in Sources */,
+				C5AE25F71BEB937C00A6664E /* DRNRealTimeBlurView.m in Sources */,
 				C5E55E111BEA534500C65500 /* LJAudioTool.m in Sources */,
 				C59A5AE31BE7655E00E83E0F /* LJMusicsViewController.m in Sources */,
+				C5AE25FB1BEB940E00A6664E /* LJLrcView.m in Sources */,
 				C59A5AFB1BE7703800E83E0F /* MJArgument.m in Sources */,
 				C59A5B021BE7703800E83E0F /* NSObject+MJKeyValue.m in Sources */,
 				C59A5AE01BE7643E00E83E0F /* main.m in Sources */,
@@ -521,6 +547,7 @@
 				C59A5ADF1BE7643E00E83E0F /* AppDelegate.m in Sources */,
 				C59A5AE61BE76DB000E83E0F /* LJMusic.m in Sources */,
 				C59A5B0D1BE785A500E83E0F /* LJPlayingViewController.m in Sources */,
+				C5AE25F81BEB937C00A6664E /* UIImage+BoxBlur.m in Sources */,
 				C59A5B031BE7703800E83E0F /* NSObject+MJMember.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

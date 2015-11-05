@@ -11,6 +11,7 @@
 #import "LJMusicTool.h"
 #import "LJMusic.h"
 #import "LJAudioTool.h"
+#import "LJLrcView.h"
 @interface LJPlayingViewController ()<AVAudioPlayerDelegate>
 //进度的定时器
 @property(nonatomic,strong)NSTimer *progressTimer;
@@ -40,6 +41,7 @@
 
 //播放或暂停的按钮
 @property (weak, nonatomic) IBOutlet UIButton *playOrPauseButton;
+@property (weak, nonatomic) IBOutlet LJLrcView *LrcView;
 
 /**
  *  进度条背景点击
@@ -61,6 +63,11 @@
  *  下一首按钮的点击
  */
 - (IBAction)nextButtoClick;
+
+/**
+ *  歌词或者图片按钮的点击
+ */
+- (IBAction)lrcOrPicButtonClick:(UIButton *)sender;
 
 - (IBAction)exit;
 @end
@@ -351,6 +358,15 @@
     [self stopPlayingMusic];
     [LJMusicTool nextMusic];
     [self startPlayingMusic];
+}
+/**
+ *  歌词或者图片按钮的点击
+ */
+- (IBAction)lrcOrPicButtonClick:(UIButton *)sender {
+    sender.selected = !sender.selected;
+    self.LrcView.hidden = !self.LrcView.hidden;
+    
+    
 }
 
 #pragma mark - AVAudioPlayerDelegate的代理方法

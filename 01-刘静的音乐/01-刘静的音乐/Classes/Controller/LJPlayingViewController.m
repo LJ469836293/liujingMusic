@@ -19,7 +19,7 @@
 
 @property(nonatomic,strong)AVAudioPlayer *player;
 
-- (IBAction)exit;
+
 // 音乐的lable
 @property (weak, nonatomic) IBOutlet UILabel *songLable;
 // 歌手的lable
@@ -38,6 +38,9 @@
 // 显示时间的Label
 @property (weak, nonatomic) IBOutlet UILabel *showTimeLable;
 
+//播放或暂停的按钮
+@property (weak, nonatomic) IBOutlet UIButton *playOrPauseButton;
+
 /**
  *  进度条背景点击
  */
@@ -46,8 +49,20 @@
  *  拖拽滑块按钮
  */
 - (IBAction)panSliderButton:(UIPanGestureRecognizer *)sender;
+/**
+ *  播放或暂停按钮的点击
+ */
+- (IBAction)playOrPauseButtonClick;
+/**
+ *  上一首按钮的点击
+ */
+- (IBAction)previousButtonClick;
+/**
+ *  下一首按钮的点击
+ */
+- (IBAction)nextButtoClick;
 
-
+- (IBAction)exit;
 @end
 
 @implementation LJPlayingViewController
@@ -148,6 +163,8 @@
         [self addProgressTimer];
         [self updateInfo];
     
+    // 5.改变按钮的状态
+    self.playOrPauseButton.selected = NO;
     
 }
 /**
@@ -181,14 +198,6 @@
 }
 
 
-#pragma mark -私有方法
--(NSString *)stringWithTime:(NSTimeInterval)time{
-    NSInteger minute = time / 60;
-    NSInteger second = (NSInteger)time % 60;
-    return [NSString stringWithFormat:@"%02ld:%02ld",minute,second];
-
-    
-}
 
 #pragma mark - 更新进度条的内容
 /**
@@ -302,16 +311,55 @@
         
     }
     
+
+}
+/**
+ *  播放货暂停的点击
+ */
+- (IBAction)playOrPauseButtonClick {
+    self.playOrPauseButton.selected = !self.playOrPauseButton.selected;
+    if (self.player.playing) {
+        [self.player pause];
+        [self removeProgressTimer];
+    }else{
+        [self.player play];
+        [self addProgressTimer];
+    
+    }
     
     
+}
+/**
+ *  上一首按钮点击
+ */
+- (IBAction)previousButtonClick {
     
-    
-    
-    
-    
-    
+    [self stopPlayingMusic];
+    [LJMusicTool previousMusic];
+    [self startPlayingMusic];
     
     
     
 }
+/**
+ *  下一首按钮点击
+ */
+- (IBAction)nextButtoClick {
+    
+    [self stopPlayingMusic];
+    [LJMusicTool nextMusic];
+    [self startPlayingMusic];
+}
+
+
+
+#pragma mark -私有方法
+-(NSString *)stringWithTime:(NSTimeInterval)time{
+    NSInteger minute = time / 60;
+    NSInteger second = (NSInteger)time % 60;
+    return [NSString stringWithFormat:@"%02ld:%02ld",minute,second];
+    
+    
+}
+
 @end

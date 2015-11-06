@@ -8,7 +8,7 @@
 //
 
 #import "LJLrcCell.h"
-
+#import "LJLrcLine.h"
 @implementation LJLrcCell
 
 +(instancetype)lrcCellWithTableView:(UITableView *)tableView{
@@ -35,6 +35,10 @@
 
 
 }
+-(void)setLrcLine:(LJLrcLine *)lrcLine{
+    _lrcLine = lrcLine;
+    self.textLabel.text = lrcLine.text;
 
+}
 
 @end

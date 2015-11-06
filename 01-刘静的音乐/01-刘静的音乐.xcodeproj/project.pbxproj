@@ -69,6 +69,7 @@
 		C59A5B0D1BE785A500E83E0F /* LJPlayingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A5B0B1BE785A500E83E0F /* LJPlayingViewController.m */; settings = {ASSET_TAGS = (); }; };
 		C59A5B0E1BE785A500E83E0F /* LJPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C59A5B0C1BE785A500E83E0F /* LJPlayingViewController.xib */; settings = {ASSET_TAGS = (); }; };
 		C59A5B111BE78B7600E83E0F /* UIView+AdjustFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C59A5B101BE78B7600E83E0F /* UIView+AdjustFrame.m */; settings = {ASSET_TAGS = (); }; };
+		C5A19DB41BECF8EA0078D723 /* LJLrcLine.m in Sources */ = {isa = PBXBuildFile; fileRef = C5A19DB31BECF8EA0078D723 /* LJLrcLine.m */; settings = {ASSET_TAGS = (); }; };
 		C5AE25F71BEB937C00A6664E /* DRNRealTimeBlurView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AE25F41BEB937C00A6664E /* DRNRealTimeBlurView.m */; settings = {ASSET_TAGS = (); }; };
 		C5AE25F81BEB937C00A6664E /* UIImage+BoxBlur.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AE25F61BEB937C00A6664E /* UIImage+BoxBlur.m */; settings = {ASSET_TAGS = (); }; };
 		C5AE25FB1BEB940E00A6664E /* LJLrcView.m in Sources */ = {isa = PBXBuildFile; fileRef = C5AE25FA1BEB940E00A6664E /* LJLrcView.m */; settings = {ASSET_TAGS = (); }; };
@@ -158,6 +159,8 @@
 		C59A5B0C1BE785A500E83E0F /* LJPlayingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LJPlayingViewController.xib; sourceTree = "<group>"; };
 		C59A5B0F1BE78B7600E83E0F /* UIView+AdjustFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+AdjustFrame.h"; sourceTree = "<group>"; };
 		C59A5B101BE78B7600E83E0F /* UIView+AdjustFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+AdjustFrame.m"; sourceTree = "<group>"; };
+		C5A19DB21BECF8EA0078D723 /* LJLrcLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LJLrcLine.h; sourceTree = "<group>"; };
+		C5A19DB31BECF8EA0078D723 /* LJLrcLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LJLrcLine.m; sourceTree = "<group>"; };
 		C5AE25F31BEB937C00A6664E /* DRNRealTimeBlurView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DRNRealTimeBlurView.h; sourceTree = "<group>"; };
 		C5AE25F41BEB937C00A6664E /* DRNRealTimeBlurView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DRNRealTimeBlurView.m; sourceTree = "<group>"; };
 		C5AE25F51BEB937C00A6664E /* UIImage+BoxBlur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+BoxBlur.h"; sourceTree = "<group>"; };
@@ -320,6 +323,8 @@
 			children = (
 				C59A5AE41BE76DB000E83E0F /* LJMusic.h */,
 				C59A5AE51BE76DB000E83E0F /* LJMusic.m */,
+				C5A19DB21BECF8EA0078D723 /* LJLrcLine.h */,
+				C5A19DB31BECF8EA0078D723 /* LJLrcLine.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -540,6 +545,7 @@
 				C59A5AFF1BE7703800E83E0F /* MJType.m in Sources */,
 				C5AE25F71BEB937C00A6664E /* DRNRealTimeBlurView.m in Sources */,
 				C5E55E111BEA534500C65500 /* LJAudioTool.m in Sources */,
+				C5A19DB41BECF8EA0078D723 /* LJLrcLine.m in Sources */,
 				C59A5AE31BE7655E00E83E0F /* LJMusicsViewController.m in Sources */,
 				C5AE25FB1BEB940E00A6664E /* LJLrcView.m in Sources */,
 				C59A5AFB1BE7703800E83E0F /* MJArgument.m in Sources */,

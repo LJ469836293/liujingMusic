@@ -9,6 +9,7 @@
 #import "LJLrcView.h"
 #import "UIView+AdjustFrame.h"
 #import "LJLrcCell.h"
+#import "LJLrcLine.h"
 @interface LJLrcView ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,weak)UITableView *tableView;
@@ -65,8 +66,8 @@
                           lrcCellWithTableView:tableView];
     
     //2.给cell设置数据
-    lrcCell.textLabel.text = @"歌词显示";
-  
+    lrcCell.lrcLine = self.lrcLines[indexPath.row];
+    
     return lrcCell;
 
 
@@ -85,8 +86,26 @@
     NSLog(@"%@",lrcString);
 
     // 3.解析歌词
+       //3.1分割字符串
+    NSArray *lrcLinesStrs = [lrcString componentsSeparatedByString:@"\n"];
+    NSMutableArray *tempArray = [NSMutableArray array];
     
+    for (NSString *lrcLineStr in lrcLinesStrs) {
+        //3.2移除不需要的行
+        if ([lrcLineStr hasPrefix:@"[ti"] || [lrcLineStr hasPrefix:@"[ar"] ||[lrcLineStr hasPrefix:@"al"] || ![lrcLineStr hasPrefix:@"["]) {
+            continue;
+        }
+        //3.3 截取每一行歌词字符串
+        NSArray *lrcLineStrParts = [lrcLineStr componentsSeparatedByString:@"]"];
+        LJLrcLine *lrcLine = [[LJLrcLine alloc]init];
+        lrcLine.text = [lrcLineStrParts lastObject];
+        lrcLine.time = [[lrcLineStrParts firstObject]substringFromIndex:1];
+        //3.4讲模型对象添加到数组中
+        [tempArray addObject:lrcLine];
+        
+    }
     
+    self.lrcLines = tempArray;
     // 4.刷新数据
     [self.tableView reloadData];
 }

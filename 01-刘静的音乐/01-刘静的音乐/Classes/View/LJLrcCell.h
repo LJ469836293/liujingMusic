@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "LJLrcLine.h"
 @interface LJLrcCell : UITableViewCell
 
+@property (nonatomic, strong) LJLrcLine  *lrcLine;
 
 +(instancetype)lrcCellWithTableView:(UITableView *)tableView;
 

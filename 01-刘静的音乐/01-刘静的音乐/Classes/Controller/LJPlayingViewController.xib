@@ -44,7 +44,7 @@
                         <action selector="exit" destination="-1" eventType="touchUpInside" id="ygK-Rl-q1Y"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMa-HI-sY9" userLabel="歌词按钮">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nMa-HI-sY9" userLabel="歌词按钮">
                     <rect key="frame" x="549" y="30" width="41" height="48"/>
                     <state key="normal" image="lyric_normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>

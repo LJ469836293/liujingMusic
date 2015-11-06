@@ -7,15 +7,75 @@
 //
 
 #import "LJLrcView.h"
+#import "UIView+AdjustFrame.h"
+#import "LJLrcCell.h"
+@interface LJLrcView ()<UITableViewDelegate,UITableViewDataSource>
 
+@property(nonatomic,weak)UITableView *tableView;
+
+@end
 @implementation LJLrcView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
+//-(id)initWithCoder:(NSCoder *)aDecoder{
+//    if ([super initWithCoder:aDecoder]) {
+//        [self setupTableView];
+//    }
+//    return self;
+//
+//}
+
+- (void)awakeFromNib {
+    [self setupTableView];
 }
-*/
+
+-(void)setupTableView{
+
+    UITableView *tableView = [[UITableView alloc]init];
+//    tableView.frame = self.bounds;
+    tableView.backgroundColor = [UIColor clearColor];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    tableView.delegate = self;
+    tableView.dataSource = self;
+//    tableView.allowsSelection = NO;
+    
+    [self addSubview:tableView];
+
+    self.tableView = tableView;
+    
+
+}
+
+-(void)layoutSubviews{
+    
+    [super layoutSubviews];
+    self.tableView.frame = self.bounds;
+    self.tableView.contentInset = UIEdgeInsetsMake(self.tableView.height * 0.5, 0, self.tableView.height * 0.5, 0);
+}
+
+#pragma mark -tableView的代理和数据源 
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    //1.创建cell
+    LJLrcCell *lrcCell = [LJLrcCell
+                          lrcCellWithTableView:tableView];
+    
+    //2.给cell设置数据
+    lrcCell.textLabel.text = @"歌词显示";
+  
+    return lrcCell;
+
+
+}
+
+
+
+
+
+
+
 
 @end

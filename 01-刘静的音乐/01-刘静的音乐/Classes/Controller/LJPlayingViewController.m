@@ -15,6 +15,9 @@
 @interface LJPlayingViewController ()<AVAudioPlayerDelegate>
 //进度的定时器
 @property(nonatomic,strong)NSTimer *progressTimer;
+//歌词的定时器
+@property(nonatomic,strong)CADisplayLink *lrcTimer;
+
 //记录正在播放的音乐
 @property(nonatomic, strong)LJMusic *playingMusic;
 
@@ -138,6 +141,7 @@
         
         //移除定时器
         [self removeProgressTimer];
+        [self removeLrcTimer];
     }];
     
     
@@ -154,6 +158,9 @@
     
     if (playingMusic == self.playingMusic) {
         [self addProgressTimer];
+  
+        [self addLrcTimer];
+        
         return;
     }
         self.playingMusic = playingMusic;
@@ -173,7 +180,7 @@
         //4.添加定时器
         [self addProgressTimer];
         [self updateInfo];
-    
+    [self addLrcTimer];
     // 5.改变按钮的状态
          self.playOrPauseButton.selected = NO;
     
@@ -192,23 +199,44 @@
     
     //3.移除定时器
     [self removeProgressTimer];
+    [self removeLrcTimer];
 }
 
 #pragma mark - 对定时器的操作
-//添加定时器
+/**
+ *  添加进度条的定时器
+ */
 -(void)addProgressTimer{
     self.progressTimer = [NSTimer scheduledTimerWithTimeInterval:1.0 target:self selector:@selector(updateInfo) userInfo:nil repeats:YES];
 }
 
-//移除定时器
+/**
+ *  移除进度条的定时器
+ */
 -(void)removeProgressTimer{
     [self.progressTimer invalidate];
     self.progressTimer = nil;
-
-
 }
 
+/**
+ *  添加歌词的定时器
+ */
+-(void)addLrcTimer{
+    if (self.LrcView.hidden) {
+        return;
+    }
+    self.lrcTimer = [CADisplayLink displayLinkWithTarget:self selector:@selector(updateLrcTime)];
+    [self.lrcTimer addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    [self updateLrcTime];
+}
+/**
+ *  移除歌词的定时器
+ */
+-(void)removeLrcTimer{
+    [self.lrcTimer invalidate];
+    self.lrcTimer = nil;
 
+}
 
 #pragma mark - 更新进度条的内容
 /**
@@ -227,8 +255,17 @@
     NSString *currentTimerStr = [self stringWithTime:self.player.currentTime];
     [self.sliderButton setTitle:currentTimerStr forState:UIControlStateNormal];
 
-
+    // 3.设置正在播放的时间
+//    self.LrcView.currentTime = self.player.currentTime;
 }
+
+-(void)updateLrcTime{
+
+
+    NSLog(@"更新歌词。。。");
+}
+
+
 /**
  *  点击进度条时更新
  */
@@ -324,6 +361,7 @@
     
 
 }
+#pragma mark - 播放控制按钮
 /**
  *  播放货暂停的点击
  */
@@ -332,10 +370,11 @@
     if (self.player.playing) {
         [self.player pause];
         [self removeProgressTimer];
+        [self removeLrcTimer];
     }else{
         [self.player play];
         [self addProgressTimer];
-    
+        [self addLrcTimer];
     }
     
     
@@ -368,6 +407,12 @@
     sender.selected = !sender.selected;
     self.LrcView.hidden = !self.LrcView.hidden;
     
+    if (self.LrcView.hidden) {
+        [self removeLrcTimer];
+    }else{
+        [self addLrcTimer];
+    
+    }
     
 }
 

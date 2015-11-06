@@ -12,4 +12,6 @@
 
 @property(nonatomic,copy)NSString *lrcname;
 
+@property (nonatomic, assign) NSTimeInterval currentTime;
+
 @end

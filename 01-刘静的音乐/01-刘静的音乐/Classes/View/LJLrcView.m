@@ -110,7 +110,12 @@
     [self.tableView reloadData];
 }
 
+-(void)setCurrentTime:(NSTimeInterval)currentTime{
+    _currentTime = currentTime;
 
+// 进行对比
+    
+}
 
 
 

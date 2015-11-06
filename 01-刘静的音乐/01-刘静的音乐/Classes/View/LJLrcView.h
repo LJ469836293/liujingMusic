@@ -10,4 +10,6 @@
 
 @interface LJLrcView : DRNRealTimeBlurView
 
+@property(nonatomic,copy)NSString *lrcname;
+
 @end

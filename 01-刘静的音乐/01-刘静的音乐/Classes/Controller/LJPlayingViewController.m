@@ -158,11 +158,13 @@
     }
         self.playingMusic = playingMusic;
         // 2. 设置界面数据
-        
+        // 2.1 设置基本界面数据
         self.songLable.text = playingMusic.name;
         self.singerLable.text = playingMusic.singer;
         self.singerIcon.image = [UIImage imageNamed:playingMusic.icon];
-        
+        // 2.2设置歌词文件名称
+    self.LrcView.lrcname = playingMusic.lrcname;
+    
         // 3.播放音乐
        self.player = [LJAudioTool playMusicWithName:playingMusic.filename];
         self.totalTimeLabel.text = [self stringWithTime:self.player.duration];

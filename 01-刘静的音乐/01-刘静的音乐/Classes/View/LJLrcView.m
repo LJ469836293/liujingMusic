@@ -14,7 +14,7 @@
 
 @property(nonatomic,weak)UITableView *tableView;
 @property (nonatomic, copy) NSArray *lrcLines;
-
+@property (nonatomic, assign) NSInteger currentIndex;
 @end
 @implementation LJLrcView
 
@@ -44,7 +44,7 @@
 
     self.tableView = tableView;
     
-
+    self.currentIndex = -1;
 }
 
 -(void)layoutSubviews{
@@ -113,8 +113,45 @@
 -(void)setCurrentTime:(NSTimeInterval)currentTime{
     _currentTime = currentTime;
 
-// 进行对比
+    if (_currentTime > currentTime) {
+        self.currentIndex = -1;
+    }
+//1.保持当前的时间
+    _currentTime = currentTime;
     
+    // 2.将传入的时间转化成字符串
+    NSInteger minute = currentTime / 60;
+    NSInteger second = (NSInteger)currentTime % 60;
+    NSInteger millisecond = (currentTime - (NSInteger)currentTime) * 1000;
+    NSString *currentTimeStr =[NSString stringWithFormat:@"%02ld:%02ld.%02ld",minute,second,millisecond];
+    
+    // 3.对比时间
+    NSInteger count = self.lrcLines.count;
+    for (NSInteger i = 0; i < count; ++i) {
+        //1.取出当前的歌词类型
+        LJLrcLine *lrcLine = self.lrcLines[i];
+        
+        //2.去除下一个歌词模型
+        NSInteger nextIndex = i + 1;
+        if (nextIndex < count) {
+            LJLrcLine *nextLrcLine = self.lrcLines[nextIndex];
+            //3.比较时间
+            if ([currentTimeStr compare:lrcLine.time] != NSOrderedAscending && [currentTimeStr compare:nextLrcLine.time] != NSOrderedDescending && self.currentIndex != i) {
+                
+                NSIndexPath *currentIndexPath = [NSIndexPath indexPathForRow:i inSection:0];
+                NSIndexPath *nextIndextPath = [NSIndexPath
+                                               indexPathForRow:i inSection:0];
+                
+                self.currentIndex = i;
+                
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+                [self.tableView reloadRowsAtIndexPaths:@[currentIndexPath,nextIndextPath] withRowAnimation:UITableViewRowAnimationNone];
+                
+                [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionTop animated:YES];
+                NSLog(@"%@---%@--%@",currentTimeStr,lrcLine.time,nextLrcLine.time);
+            }
+        }
+    }
 }
 
 

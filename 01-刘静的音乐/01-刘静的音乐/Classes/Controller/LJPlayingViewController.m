@@ -260,9 +260,9 @@
 }
 
 -(void)updateLrcTime{
+    self.LrcView.currentTime = self.player.currentTime;
 
-
-    NSLog(@"更新歌词。。。");
+//    NSLog(@"更新歌词。。。");
 }
 
 
